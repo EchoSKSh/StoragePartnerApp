@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StoragePartnerApp.Pages.SearchPage"
+             Title="SearchPage">
+    <VerticalStackLayout>
+        <Grid BackgroundColor="#1d94ab">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <ImageButton Grid.Column="0"
+                         x:Name="ImgBackButton"
+                         Source="left_arrow_icon.svg"
+                         HorizontalOptions="Center"
+                         VerticalOptions="Center"
+                         HeightRequest="30"
+                         WidthRequest="30"
+                         Clicked="ImgBackButton_Clicked"/>
+            <SearchBar Grid.Column="1"
+                       x:Name="SearchBarProperty"
+                       Margin="5"
+                       TextColor="Black"
+                       BackgroundColor="White"
+                       Placeholder="Search"
+                       TextChanged="SearchBarProperty_TextChanged"/>
+        </Grid>
+        <CollectionView x:Name="CVSearchProperty"
+                        Margin="0,10,0,0"
+                        SelectionMode="Single"
+                        SelectionChanged="CVSearchProperty_SelectionChanged">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="5"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout Spacing="5">
+                        <Label Padding="10"
+                               FontSize="Medium"
+                               Text="{Binding Name}"/>
+                        <Label Padding="10"
+                               FontSize="Medium" 
+                               Text="{Binding Address}"/>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

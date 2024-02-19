@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StoragePartnerApp.Pages.LoginPage"
+             Title="LoginPage">
+    <VerticalStackLayout VerticalOptions="Center"
+                         Margin="20,0,20,0"
+                         Spacing="20">
+        <Image Source="dotnet_bot.svg"
+               HorizontalOptions="Center"
+               HeightRequest="80"
+               WidthRequest="80"/>
+
+        <Label Text="Welcome Back!"
+               HorizontalOptions="Center"
+               FontSize="Large"
+               TextColor="#101010"/>
+
+        <Label Text="Please enter your email below to start using the app"
+               FontSize="Small"
+               TextColor="LightSlateGray"
+               HorizontalOptions="Center"/>
+
+        <Entry x:Name="EntEmail"
+               Placeholder="Email"/>
+
+        <Entry x:Name="EntPassword" 
+               Placeholder="Password"/>
+
+        <Button x:Name="BtnSignIn"
+                Text="Sign In"
+                HeightRequest="50"
+                FontSize="Medium"
+                BackgroundColor="#1d94ab"
+                Clicked="BtnSignIn_Clicked"/>
+
+        <HorizontalStackLayout HorizontalOptions="Center">
+            <Label Text="Not a member? "
+                   FontSize="Medium"
+                   TextColor="#101010"/>
+
+            <Label Text="Join Now"
+                   FontSize="Medium"
+                   TextColor="#101010" />
+
+            <HorizontalStackLayout.GestureRecognizers>
+                <TapGestureRecognizer x:Name="TapJoinNow" Tapped="TapJoinNow_Tapped"/>
+            </HorizontalStackLayout.GestureRecognizers>
+        </HorizontalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

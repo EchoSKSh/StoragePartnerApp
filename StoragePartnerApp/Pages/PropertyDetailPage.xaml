@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StoragePartnerApp.Pages.PropertyDetailPage"
+             Title="PropertyDetailPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Image x:Name="PropertyDetailImage"
+               Grid.Row="0"
+               Grid.RowSpan="3"
+               VerticalOptions="Start"
+               HeightRequest="280"
+               Aspect="Fill" />
+
+        <StackLayout Grid.Row="1"
+                     Margin="20,0,20,0"
+                     Orientation="Horizontal">
+            <ImageButton x:Name="BackButtonImage"
+                         Source="back_icon.svg"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Start"
+                         Padding="5"
+                         WidthRequest="40"
+                         HeightRequest="40"
+                         CornerRadius="10"
+                         BackgroundColor="White"
+                         Clicked="BackButtonImage_Clicked"/>
+
+            <ImageButton x:Name="ReserveButtonImage"
+                         HorizontalOptions="EndAndExpand"
+                         VerticalOptions="Start"
+                         Padding="5"
+                         WidthRequest="40"
+                         HeightRequest="40"
+                         CornerRadius="10"
+                         BackgroundColor="White"
+                         Clicked="ReserveButtonImage_Clicked"/>
+        </StackLayout>
+
+        <VerticalStackLayout Grid.Row="3"
+                             Margin="20">
+            <Label x:Name="PriceLabel"
+                   FontSize="Subtitle" />
+            <HorizontalStackLayout Spacing="5">
+                <Image Source="location_Icon.svg"
+                       HeightRequest="20" />
+                <Label x:Name="AddressLabel"
+                       FontSize="Medium" />
+            </HorizontalStackLayout>
+            <Label Text="Description"
+                   FontSize="Title"
+                   Margin="0,20,0,20" />
+            <Label x:Name="DescriptionLabel"
+                   FontSize="Medium" />
+        </VerticalStackLayout>
+
+        <HorizontalStackLayout Grid.Row="4"
+                               VerticalOptions="EndAndExpand"
+                               HorizontalOptions="Center"
+                               Spacing="30"
+                               Margin="0,0,0,20">
+            <Frame HeightRequest="70"
+                   WidthRequest="150"
+                   CornerRadius="35"
+                   BackgroundColor="#1d94ab">
+                <HorizontalStackLayout Spacing="10">
+                    <Image Source="message_icon"
+                           HeightRequest="25"
+                           WidthRequest="25"
+                           VerticalOptions="Center" />
+                    <Label Text="Message"
+                           FontSize="Medium"
+                           TextColor="White"
+                           VerticalOptions="Center" />
+                </HorizontalStackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapMessage_Tapped" />
+                </Frame.GestureRecognizers>
+            </Frame>
+            <Frame HeightRequest="70"
+                   WidthRequest="150"
+                   CornerRadius="35"
+                   BackgroundColor="#1d94ab">
+                <HorizontalStackLayout Spacing="30">
+                    <Image Source="phone_icon"
+                           HeightRequest="25"
+                           WidthRequest="25"
+                           VerticalOptions="Center"
+                           HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="Call"
+                           FontSize="Medium"
+                           TextColor="White"
+                           VerticalOptions="Center"
+                           HorizontalOptions="CenterAndExpand"/>
+                </HorizontalStackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapCall_Tapped"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>
