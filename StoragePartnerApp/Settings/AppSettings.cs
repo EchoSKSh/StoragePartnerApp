@@ -10,7 +10,6 @@ namespace StoragePartnerApp.Settings
     {
         public static string BaseApiUrl = "https://storagepartnerapi.azurewebsites.net/";
 
-
         public static string RegisterUserUrl = BaseApiUrl + "api/user/register";
         public static string LoginUrl =  BaseApiUrl + "api/user/login";
         public static string CategoriesUrl =  BaseApiUrl + "api/categories";
@@ -18,6 +17,8 @@ namespace StoragePartnerApp.Settings
         public static string StorageDetailUrl =  BaseApiUrl + "api/properties/storagedetail/";
         public static string TrendingStorageUrl =  BaseApiUrl + "api/properties/trendingstorages";
         public static string SearchStorageUrl =  BaseApiUrl + "api/properties/search/";
+        public static string MyStorageUrl = BaseApiUrl + "api/properties/mystorage/";
+
         //Implement
         public static string BookmarksUrl =  BaseApiUrl + "api/bookmarks";
         public static string AddBookmarksUrl =  BaseApiUrl + "api/bookmarks";

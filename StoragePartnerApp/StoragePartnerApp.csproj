@@ -65,6 +65,7 @@
 	  <None Remove="Resources\Images\privacy_icon.svg" />
 	  <None Remove="Resources\Images\search_icon.svg" />
 	  <None Remove="Resources\Images\settings_icon.svg" />
+	  <None Remove="Resources\Images\storage.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -80,6 +81,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\MyStorage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\PropertyDetailPage.xaml">

@@ -79,6 +79,16 @@ namespace StoragePartnerApp.Services
             return results;
         }
 
+        public static async Task<List<MyStorage>> GetMyStorage()
+        {
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accesstoken", string.Empty));
+            var response = await httpClient.GetStringAsync(AppSettings.MyStorageUrl);
+            var results = JsonConvert.DeserializeObject<List<MyStorage>>(response);
+
+            return results;
+        }
+
         public static async Task<PropertyDetail> GetStorageDetails(int storageId)
         {
             var httpClient = new HttpClient();

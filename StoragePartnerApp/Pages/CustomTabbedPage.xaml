@@ -12,6 +12,8 @@
                     IconImageSource="home_icon.svg" />
     <local:BookmarkPage Title="Reserved"
                         IconImageSource="bookmark_icon.svg" />
+    <local:MyStorage Title="My Storage"
+                     IconImageSource="storage.png" />
     <local:SettingsPage Title="Settings"
                         IconImageSource="settings_icon.svg" />
 </TabbedPage>
