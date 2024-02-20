@@ -16,8 +16,8 @@ namespace StoragePartnerApp.Models
         public string Name { get; set; }
         [JsonProperty("imageUrl")]
         public string ImageUrl { get; set; }
-        [JsonProperty("properties")]
         public string FullImageUrl => AppSettings.BaseApiUrl + ImageUrl;
-        public object Properties { get; set; }
+        [JsonProperty("storages")]
+        public object Storages { get; set; }
     }
 }

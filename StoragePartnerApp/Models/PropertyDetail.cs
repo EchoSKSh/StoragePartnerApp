@@ -14,8 +14,8 @@ namespace StoragePartnerApp.Models
         public int Id { get; set; }
         [JsonProperty("name")]
         public string Name { get; set; }
-        [JsonProperty("detail")]
-        public string Detail { get; set; }
+        [JsonProperty("description")]
+        public string Description { get; set; }
         [JsonProperty("address")]
         public string Address { get; set; }
         [JsonProperty("price")]

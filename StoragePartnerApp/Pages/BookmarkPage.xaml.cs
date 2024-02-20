@@ -7,18 +7,18 @@ public partial class BookmarkPage : ContentPage
 	public BookmarkPage()
 	{
 		InitializeComponent();
-		GetReservedPropertyList();
+		//GetReservedPropertyList();
 	}
 
     private async void GetReservedPropertyList()
     {
-		var reservedProperties = await ApiService.GetBookmarks();
-		CVReservedProperties.ItemsSource = reservedProperties;
+		//var reservedProperties = await ApiService.GetBookmarks();
+		//CVReservedProperties.ItemsSource = reservedProperties;
     }
 
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        GetReservedPropertyList();
+        //GetReservedPropertyList();
     }
 }

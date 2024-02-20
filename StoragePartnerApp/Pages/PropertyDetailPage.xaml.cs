@@ -18,10 +18,10 @@ public partial class PropertyDetailPage : ContentPage
 
     private async void GetPropertyDetail(int propertyId)
     {
-        var propertyDetail = await ApiService.GetPropertyDetails(propertyId);
+        var propertyDetail = await ApiService.GetStorageDetails(propertyId);
         PriceLabel.Text = propertyDetail.Price.ToString();
         AddressLabel.Text = propertyDetail.Address;
-        DescriptionLabel.Text = propertyDetail.Detail;
+        DescriptionLabel.Text = propertyDetail.Description;
         PropertyDetailImage.Source = propertyDetail.FullImageUrl;
         this.propertyId = propertyDetail.Id;
 
@@ -57,31 +57,31 @@ public partial class PropertyDetailPage : ContentPage
 
     private async void ReserveButtonImage_Clicked(object sender, EventArgs e)
     {
-        if (!isBookmarkEnabled)
-        {
-            //Add bookmark
-            var userId = Preferences.Get("userId", 0);
-            var response = await ApiService.AddBookmark(userId, propertyId);
-            if (response)
-            {
-                isBookmarkEnabled = true;
-                ReserveButtonImage.Source = "bookmark_fill_icon.svg";
-                await DisplayAlert("", "Bookmark Added", "Ok");
-            }
-            else
-            {
-                await DisplayAlert("", "Oops something went wrong", "Cancel");
-            }
-        }
-        else
-        {
-            //Delete bookmark
-            var response = await ApiService.DeleteBookmark(bookmarkId);
-            if (response)
-            {
-                isBookmarkEnabled = false;
-                ReserveButtonImage.Source = "bookmark_empty_icon.svg";
-            }
-        }
+    //    if (!isBookmarkEnabled)
+    //    {
+    //        //Add bookmark
+    //        var userId = Preferences.Get("userId", 0);
+    //        var response = await ApiService.AddBookmark(userId, propertyId);
+    //        if (response)
+    //        {
+    //            isBookmarkEnabled = true;
+    //            ReserveButtonImage.Source = "bookmark_fill_icon.svg";
+    //            await DisplayAlert("", "Bookmark Added", "Ok");
+    //        }
+    //        else
+    //        {
+    //            await DisplayAlert("", "Oops something went wrong", "Cancel");
+    //        }
+    //    }
+    //    else
+    //    {
+    //        //Delete bookmark
+    //        var response = await ApiService.DeleteBookmark(bookmarkId);
+    //        if (response)
+    //        {
+    //            isBookmarkEnabled = false;
+    //            ReserveButtonImage.Source = "bookmark_empty_icon.svg";
+    //        }
+    //    }
     }
 }

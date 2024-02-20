@@ -13,5 +13,5 @@
     <local:BookmarkPage Title="Reserved"
                         IconImageSource="bookmark_icon.svg" />
     <local:SettingsPage Title="Settings"
-                        IconImageSource="settings_icon.svg"/>
+                        IconImageSource="settings_icon.svg" />
 </TabbedPage>

@@ -32,7 +32,7 @@ public partial class HomePage : ContentPage
 
 	private async void GetTrendingProperties()
 	{
-		var trendingProperties = await ApiService.GetTrendingProperties();
+		var trendingProperties = await ApiService.GetTrendingStorages();
 		CvTopPicks.ItemsSource = trendingProperties;
 	}
 

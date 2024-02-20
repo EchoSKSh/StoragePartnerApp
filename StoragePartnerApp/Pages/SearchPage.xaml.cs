@@ -22,7 +22,7 @@ public partial class SearchPage : ContentPage
         if (searchText == null)
             return;
 
-        var propertyResults = await ApiService.SearchProperty(searchText);
+        var propertyResults = await ApiService.SearchStorage(searchText);
 
         if(propertyResults != null)
         {

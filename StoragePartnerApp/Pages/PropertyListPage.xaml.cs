@@ -17,7 +17,7 @@ public partial class PropertyListPage : ContentPage
 
 	private async void GetCategoriesList(int categoryId)
 	{
-		var propertyList = await ApiService.GetPropertyByCategory(categoryId);
+		var propertyList = await ApiService.GetStorageByCategory(categoryId);
 		CvPropertyList.ItemsSource = propertyList;
 	}
 

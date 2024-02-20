@@ -69,7 +69,7 @@ namespace StoragePartnerApp.Services
             return results;
         }
 
-        public static async Task<List<PropertyByCategory>> GetPropertyByCategory(int categoryId)
+        public static async Task<List<PropertyByCategory>> GetStorageByCategory(int categoryId)
         {
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accesstoken", string.Empty));
@@ -79,17 +79,17 @@ namespace StoragePartnerApp.Services
             return results;
         }
 
-        public static async Task<PropertyDetail> GetPropertyDetails(int propertyId)
+        public static async Task<PropertyDetail> GetStorageDetails(int storageId)
         {
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accesstoken", string.Empty));
-            var response = await httpClient.GetStringAsync(AppSettings.StorageDetailUrl + propertyId);
+            var response = await httpClient.GetStringAsync(AppSettings.StorageDetailUrl + storageId);
             var results = JsonConvert.DeserializeObject<PropertyDetail>(response);
 
             return results;
         }
 
-        public static async Task<List<TrendingProperty>> GetTrendingProperties()
+        public static async Task<List<TrendingProperty>> GetTrendingStorages()
         {
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accesstoken", string.Empty));
@@ -99,7 +99,7 @@ namespace StoragePartnerApp.Services
             return results; 
         }
 
-        public static async Task<List<PropertyByCategory>> SearchProperty(string address)
+        public static async Task<List<PropertyByCategory>> SearchStorage(string address)
         {
             var httpClient = new HttpClient(); ;
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accesstoken", string.Empty));
@@ -109,51 +109,51 @@ namespace StoragePartnerApp.Services
             return results;
         }
 
-        public static async Task<List<BookmarkList>> GetBookmarks()
-        {
-            var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accesstoken", string.Empty));
-            var response = await httpClient.GetStringAsync(AppSettings.BookmarksUrl);
-            var results = JsonConvert.DeserializeObject<List<BookmarkList>>(response);
+        //public static async Task<List<BookmarkList>> GetBookmarks()
+        //{
+        //    var httpClient = new HttpClient();
+        //    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accesstoken", string.Empty));
+        //    var response = await httpClient.GetStringAsync(AppSettings.BookmarksUrl);
+        //    var results = JsonConvert.DeserializeObject<List<BookmarkList>>(response);
 
-            return results;
-        }
+        //    return results;
+        //}
 
-        public static async Task<bool> AddBookmark(int userId, int propertyId)
-        {
-            var request = new AddBookmark 
-            {
-                UserId = userId,
-                PropertyId = propertyId
-            };
+        //public static async Task<bool> AddBookmark(int userId, int propertyId)
+        //{
+        //    var request = new AddBookmark 
+        //    {
+        //        UserId = userId,
+        //        PropertyId = propertyId
+        //    };
 
-            var jsonRequest = JsonConvert.SerializeObject(request);
-            var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+        //    var jsonRequest = JsonConvert.SerializeObject(request);
+        //    var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
 
-            var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accesstoken", string.Empty));
-            var response = await httpClient.PostAsync(AppSettings.AddBookmarksUrl, content);
+        //    var httpClient = new HttpClient();
+        //    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accesstoken", string.Empty));
+        //    var response = await httpClient.PostAsync(AppSettings.AddBookmarksUrl, content);
 
-            if (!response.IsSuccessStatusCode)
-            {
-                return false;
-            }
+        //    if (!response.IsSuccessStatusCode)
+        //    {
+        //        return false;
+        //    }
 
-            return true;
+        //    return true;
 
-        }
+        //}
 
-        public static async Task<bool> DeleteBookmark(int bookmarkId)
-        {
-            var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accesstoken", string.Empty));
-            var response = await httpClient.DeleteAsync(AppSettings.DeleteBookmarkUrl + bookmarkId);
+        //public static async Task<bool> DeleteBookmark(int bookmarkId)
+        //{
+        //    var httpClient = new HttpClient();
+        //    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accesstoken", string.Empty));
+        //    var response = await httpClient.DeleteAsync(AppSettings.DeleteBookmarkUrl + bookmarkId);
 
-            if (!response.IsSuccessStatusCode)
-            {
-                return false;
-            }
-            return true;
-        }
+        //    if (!response.IsSuccessStatusCode)
+        //    {
+        //        return false;
+        //    }
+        //    return true;
+        //}
     }
 }
