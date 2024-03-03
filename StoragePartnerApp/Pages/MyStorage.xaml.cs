@@ -21,4 +21,9 @@ public partial class MyStorage : ContentPage
 		var myStorage = await ApiService.GetMyStorage();
 		CvMyStorage.ItemsSource = myStorage;
 	}
+
+    private async void AddNewStorage_Clicked(object sender, EventArgs e)
+    {
+		await Navigation.PushAsync(new AddNewStorage());
+    }
 }

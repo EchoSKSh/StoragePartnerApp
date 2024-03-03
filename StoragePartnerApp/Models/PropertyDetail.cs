@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 using StoragePartnerApp.Settings;
 using System;
 using System.Collections.Generic;
@@ -29,5 +30,12 @@ namespace StoragePartnerApp.Models
         public string Phone { get; set; }
         [JsonProperty("bookmark")]
         public Bookmark Bookmark { get; set; }
+        [JsonProperty("longitude")]
+        public double Longitude { get; set; }
+        [JsonProperty("latitude")]
+        public double Latitude { get; set; }
+        public IFormFile File { get; set; }
+        [JsonProperty("categoryId")]
+        public int CategoryId { get; set; }
     }
 }

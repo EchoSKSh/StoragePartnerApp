@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StoragePartnerApp.Pages.AddNewStorage"
+             Title="Add Storage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <VerticalStackLayout Grid.Row="0"
+                             VerticalOptions="Center"
+                             Margin="20,0,20,0"
+                             Spacing="20">
+            <Label Text="Create a new storage"
+                   FontSize="Large"
+                   TextColor="#101010"
+                   HorizontalOptions="Center" />
+
+            <Label Text="Please enter the information below to cretae a new storage unit."
+                   FontSize="Small"
+                   TextColor="LightSlateGray"
+                   HorizontalOptions="Center" />
+
+            <Entry x:Name="entName"
+                   Placeholder="Enter storage name" />
+
+            <Picker x:Name="pickerCategory"
+                    Title="Select a categry"
+                    ItemDisplayBinding="{Binding Name}"
+                    SelectedItem="{Binding SelectedItem}" />
+
+            <Entry x:Name="entDescription"
+                   Placeholder="Enter storage description" />
+
+            <HorizontalStackLayout>
+                <Label Text="Storage Image"
+                       FontSize="16"
+                       TextColor="#101010"/>
+
+                <Button x:Name="btnImageUpload"
+                        Text="Upload"
+                        BackgroundColor="#1d94ab"
+                        Margin="30,-8,0,-15"
+                        Clicked="btnImageUpload_Clicked"/>
+            </HorizontalStackLayout>
+
+            <Entry x:Name="entPhone"
+                   Placeholder="Enter the phone number"/>
+
+            <Entry x:Name="entPrice"
+                   Placeholder="Enter storage price" />
+
+            <Entry x:Name="entAddress"
+                   Placeholder="Enter storage address" />
+        </VerticalStackLayout>
+        
+        <Map x:Name="map"
+             Grid.Row="1"
+             Margin="20,0,20,0" />
+        <VerticalStackLayout Grid.Row="2"
+                             Margin="10,5,10,10">
+            <Button x:Name="btnAddNewStorage"
+                    Text="Save"
+                    HeightRequest="40"
+                    FontSize="Medium"
+                    BackgroundColor="#1d94ab" 
+                    Clicked="btnAddNewStorage_Clicked"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

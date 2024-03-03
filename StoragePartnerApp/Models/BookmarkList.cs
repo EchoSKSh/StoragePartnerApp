@@ -28,6 +28,5 @@ namespace StoragePartnerApp.Models
         public int UserId { get; set; }
         [JsonProperty("propertyId")]
         public int PropertyId { get; set; }
-
     }
 }

@@ -18,10 +18,15 @@ namespace StoragePartnerApp.Settings
         public static string TrendingStorageUrl =  BaseApiUrl + "api/properties/trendingstorages";
         public static string SearchStorageUrl =  BaseApiUrl + "api/properties/search/";
         public static string MyStorageUrl = BaseApiUrl + "api/properties/mystorage/";
+        public static string AddNewStorage = BaseApiUrl + "api/properties/";
 
         //Implement
         public static string BookmarksUrl =  BaseApiUrl + "api/bookmarks";
         public static string AddBookmarksUrl =  BaseApiUrl + "api/bookmarks";
         public static string DeleteBookmarkUrl =  BaseApiUrl + "api/bookmarks/";
+
+        //Google map
+        public const string GoogleMapapiKey = "AIzaSyCApYlmf5stSZ-BoqLmLVexPvkRE8CAFxU";
+        public static string GoogleMapAPI = $"https://maps.googleapis.com/maps/api/geocode/json?address=";
     }
 }

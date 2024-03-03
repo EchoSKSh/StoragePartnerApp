@@ -165,5 +165,44 @@ namespace StoragePartnerApp.Services
         //    }
         //    return true;
         //}
+
+        public static async Task<Location> GetLocationFromAddress(string address)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                HttpResponseMessage response = await client.GetAsync(AppSettings.GoogleMapAPI + address + "&key=" + AppSettings.GoogleMapapiKey);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonResponse = await response.Content.ReadAsStringAsync();
+                    dynamic jsonObject = JsonConvert.DeserializeObject(jsonResponse);
+
+                    if (jsonObject.status == "OK")
+                    {
+                        double latitude = jsonObject.results[0].geometry.location.lat;
+                        double longitude = jsonObject.results[0].geometry.location.lng;
+                        return new Location(latitude, longitude);
+                    }
+                }
+            }
+
+            return null;
+        }
+
+        public static async Task<bool> AddNewStorage(PropertyDetail storage)
+        {
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accesstoken", string.Empty));
+            var jsonRequest = JsonConvert.SerializeObject(storage);
+            var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+            var response = await httpClient.PostAsync(AppSettings.AddNewStorage, content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }
