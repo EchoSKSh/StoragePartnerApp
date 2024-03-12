@@ -1,16 +1,16 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
+using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
-using StoragePartnerApp.Helpers;
 using StoragePartnerApp.Models;
 using StoragePartnerApp.Services;
 using System.Net.Http.Headers;
+using System.Text;
 
 namespace StoragePartnerApp.Pages;
 
 public partial class AddNewStorage : ContentPage
 {
-    private IFormFile UploadedFile;
     private double longtitude;
     private double latitude;
 
@@ -40,6 +40,16 @@ public partial class AddNewStorage : ContentPage
         {
             longtitude = location.Longitude;
             latitude = location.Latitude;
+
+            var pin = new Pin
+            {
+                Label = address, // Optional label for the pin
+                Location = location
+            };
+
+            // Add the pin to the map's pins collection
+            map.Pins.Add(pin);
+
             map.MoveToRegion(MapSpan.FromCenterAndRadius(location, Distance.FromMiles(0.5)));
             map.IsVisible = true;
         }
@@ -49,11 +59,10 @@ public partial class AddNewStorage : ContentPage
     {
         var storage = new PropertyDetail
         {
-            Name = entAddress.Text,
+            Name = entName.Text,
             Description = entDescription.Text,
             Price = Convert.ToDouble(entPrice.Text),
             Address = entAddress.Text,
-            File = UploadedFile,
             Phone = entPhone.Text,
             Longitude = longtitude,
             Latitude = latitude,
@@ -64,7 +73,9 @@ public partial class AddNewStorage : ContentPage
 
         if (isStorageAdded)
         {
-            await DisplayAlert("", "Succesfully storage added", "Ok");
+            await DisplayAlert("", "Succesfully storage added. Please upload primary image", "Ok");
+            await Task.Delay(1000);
+            await UploadImage();
         }
         else
         {
@@ -72,21 +83,27 @@ public partial class AddNewStorage : ContentPage
         }
     }
 
-    private async void btnImageUpload_Clicked(object sender, EventArgs e)
+    private async Task UploadImage()
     {
         var fileResult = await FilePicker.Default.PickAsync();
 
-        if(fileResult != null)
+        if (fileResult != null)
         {
             if (fileResult.FileName.EndsWith(".jpg") || fileResult.FileName.EndsWith(".png"))
             {
-                using var stream = await fileResult.OpenReadAsync();
-                UploadedFile = new CustomFormFile(stream, fileResult.FileName, fileResult.ContentType);
-            }
+                var imageData = new ImageData();
 
+                using (var stream = await fileResult.OpenReadAsync())
+                {
+                    imageData.ImageArray = new byte[stream.Length];
+                    await stream.ReadAsync(imageData.ImageArray, 0, (int)stream.Length);
+                }
+                imageData.FileName = fileResult.FileName;
+                
+            }
             else
             {
-                await DisplayAlert("","Invalid file format", "Cancel");
+                await DisplayAlert("", "Invalid file format", "Cancel");
             }
         }
     }

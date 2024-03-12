@@ -22,7 +22,7 @@ public partial class PropertyDetailPage : ContentPage
         PriceLabel.Text = propertyDetail.Price.ToString();
         AddressLabel.Text = propertyDetail.Address;
         DescriptionLabel.Text = propertyDetail.Description;
-        PropertyDetailImage.Source = propertyDetail.FullImageUrl;
+        PropertyDetailImage.Source = propertyDetail.ImageUrl;
         this.propertyId = propertyDetail.Id;
 
         phoneNumber = propertyDetail.Phone;

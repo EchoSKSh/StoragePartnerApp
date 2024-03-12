@@ -35,7 +35,7 @@
             <Entry x:Name="entDescription"
                    Placeholder="Enter storage description" />
 
-            <HorizontalStackLayout>
+            <!--<HorizontalStackLayout>
                 <Label Text="Storage Image"
                        FontSize="16"
                        TextColor="#101010"/>
@@ -45,7 +45,7 @@
                         BackgroundColor="#1d94ab"
                         Margin="30,-8,0,-15"
                         Clicked="btnImageUpload_Clicked"/>
-            </HorizontalStackLayout>
+            </HorizontalStackLayout>-->
 
             <Entry x:Name="entPhone"
                    Placeholder="Enter the phone number"/>

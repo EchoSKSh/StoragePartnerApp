@@ -1,8 +1,10 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 using StoragePartnerApp.Models;
 using StoragePartnerApp.Settings;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace StoragePartnerApp.Services
@@ -117,6 +119,23 @@ namespace StoragePartnerApp.Services
             var results = JsonConvert.DeserializeObject<List<PropertyByCategory>>(response);
 
             return results;
+        }
+
+        public static async Task<bool> UploadImage(ImageData imageData)
+        {
+            var jsonRequest = JsonConvert.SerializeObject(imageData);
+            var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accesstoken", string.Empty));
+            var response = await httpClient.PostAsync(AppSettings.UploadImage, content);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                   return false;
+            }
+
+            return true;
         }
 
         //public static async Task<List<BookmarkList>> GetBookmarks()

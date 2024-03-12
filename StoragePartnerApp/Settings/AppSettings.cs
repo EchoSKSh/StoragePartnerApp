@@ -19,6 +19,7 @@ namespace StoragePartnerApp.Settings
         public static string SearchStorageUrl =  BaseApiUrl + "api/properties/search/";
         public static string MyStorageUrl = BaseApiUrl + "api/properties/mystorage/";
         public static string AddNewStorage = BaseApiUrl + "api/properties/";
+        public static string UploadImage = BaseApiUrl + "api/properties/uploadimage";
 
         //Implement
         public static string BookmarksUrl =  BaseApiUrl + "api/bookmarks";

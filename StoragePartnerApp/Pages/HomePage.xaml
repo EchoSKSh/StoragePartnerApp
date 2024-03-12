@@ -18,7 +18,7 @@
                 <Label x:Name="LblUserName"
                        Text="Hi Shayether"
                        FontSize="Large" />
-                <Label Text="Find your best place to stay"
+                <Label Text="Find your best storage space"
                        FontSize="Medium" />
             </VerticalStackLayout>
 
@@ -58,7 +58,7 @@
                                     <Image Aspect="AspectFit"
                                            HeightRequest="20"
                                            WidthRequest="20"
-                                           Source="{Binding FullImageUrl}"/>
+                                           Source="{Binding ImageUrl}"/>
                                     <Label VerticalOptions="Center"
                                            FontSize="Medium"
                                            Text="{Binding Name}"/>
@@ -100,7 +100,7 @@
                                             StrokeShape="RoundRectangle 5,5,5,5"
                                             HeightRequest="200"
                                             WidthRequest="250">
-                                        <Image Source="{Binding FullImageUrl}"
+                                        <Image Source="{Binding ImageUrl}"
                                                Aspect="Fill" />
                                     </Border>
                                     <Label Grid.Row="1"
