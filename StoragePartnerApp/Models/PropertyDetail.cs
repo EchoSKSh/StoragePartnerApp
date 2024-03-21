@@ -29,7 +29,7 @@ namespace StoragePartnerApp.Models
         [JsonProperty("phone")]
         public string Phone { get; set; }
         [JsonProperty("bookmark")]
-        public Bookmark Bookmark { get; set; }
+        public Reservation Bookmark { get; set; }
         [JsonProperty("longitude")]
         public double Longitude { get; set; }
         [JsonProperty("latitude")]

@@ -20,7 +20,6 @@ namespace StoragePartnerApp.Models
         public string Address { get; set; }
         [JsonProperty("imageUrl")]
         public string ImageUrl { get; set; }
-        public string FullImageUrl => AppSettings.BaseApiUrl + ImageUrl;
         [JsonProperty("price")]
         public double Price { get; set; }
         [JsonProperty("isTrending")]
@@ -35,5 +34,6 @@ namespace StoragePartnerApp.Models
         public double Longitude { get; set; }
         [JsonProperty("latitude")]
         public double Latitude { get; set; }
+        public string Status { get; set; }
     }
 }

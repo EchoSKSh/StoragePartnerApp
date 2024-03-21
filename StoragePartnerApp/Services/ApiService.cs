@@ -138,39 +138,33 @@ namespace StoragePartnerApp.Services
             return true;
         }
 
-        //public static async Task<List<BookmarkList>> GetBookmarks()
-        //{
-        //    var httpClient = new HttpClient();
-        //    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accesstoken", string.Empty));
-        //    var response = await httpClient.GetStringAsync(AppSettings.BookmarksUrl);
-        //    var results = JsonConvert.DeserializeObject<List<BookmarkList>>(response);
+        public static async Task<List<Reservation>> GetReservedStorages()
+        {
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accesstoken", string.Empty));
+            var response = await httpClient.GetStringAsync(AppSettings.GetReservedStorages);
+            var results = JsonConvert.DeserializeObject<List<Reservation>>(response);
 
-        //    return results;
-        //}
+            return results;
+        }
 
-        //public static async Task<bool> AddBookmark(int userId, int propertyId)
-        //{
-        //    var request = new AddBookmark 
-        //    {
-        //        UserId = userId,
-        //        PropertyId = propertyId
-        //    };
+        public static async Task<bool> AddReservation(Reservation reservation)
+        {
+            var jsonRequest = JsonConvert.SerializeObject(reservation);
+            var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
 
-        //    var jsonRequest = JsonConvert.SerializeObject(request);
-        //    var content = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accesstoken", string.Empty));
+            var response = await httpClient.PostAsync(AppSettings.AddReservationUrl, content);
 
-        //    var httpClient = new HttpClient();
-        //    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accesstoken", string.Empty));
-        //    var response = await httpClient.PostAsync(AppSettings.AddBookmarksUrl, content);
+            if (!response.IsSuccessStatusCode)
+            {
+                return false;
+            }
 
-        //    if (!response.IsSuccessStatusCode)
-        //    {
-        //        return false;
-        //    }
+            return true;
 
-        //    return true;
-
-        //}
+        }
 
         //public static async Task<bool> DeleteBookmark(int bookmarkId)
         //{

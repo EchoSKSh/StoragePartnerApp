@@ -24,18 +24,35 @@
                                 Margin="0"
                                 StrokeShape="RoundRectangle 5,5,5,5">
                             <Image Aspect="Fill"
-                                   HeightRequest="160"
-                                   Source="{Binding FullImageUrl}" />
+                                   HeightRequest="100"
+                                   WidthRequest="100"
+                                   Source="{Binding ImageUrl}" />
                         </Border>
                         <StackLayout Grid.Column="1"
                                      Padding="15"
                                      Spacing="10">
-                            <Label Text="{Binding Price}"
-                                   FontSize="Medium" />
                             <Label Text="{Binding Name}"
                                    FontSize="Small" />
-                            <Label Text="{Binding Address}"
-                                   FontSize="Small" />
+                            <HorizontalStackLayout>
+                                <Image Source="price_tag.png"
+                                       HeightRequest="15" />
+                                <Label Text=" Rs "/>
+                                <Label Text="{Binding Price}"
+                                       FontSize="Small" />
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout>
+                                <Image Source="location_Icon.svg"
+                                       HeightRequest="15" />
+                                <Label Text=" "/>
+                                <Label Text="{Binding Address}"
+                                       FontSize="Small" />
+                            </HorizontalStackLayout>
+                            <Label Text="{Binding Status}" 
+                                   FontSize="Small"
+                                   TextColor="white"
+                                   BackgroundColor="#1d94ab"
+                                   WidthRequest="80"
+                                   HorizontalOptions="Start"/>
                         </StackLayout>
                     </Grid>
                 </DataTemplate>

@@ -54,6 +54,7 @@
 	  <None Remove="Resources\Images\bookmark_empty_icon.svg" />
 	  <None Remove="Resources\Images\bookmark_fill_icon.svg" />
 	  <None Remove="Resources\Images\bookmark_icon.svg" />
+	  <None Remove="Resources\Images\Calendar_Image.jpg" />
 	  <None Remove="Resources\Images\faq_icon.svg" />
 	  <None Remove="Resources\Images\home_icon.svg" />
 	  <None Remove="Resources\Images\house02.jpg" />
@@ -63,6 +64,7 @@
 	  <None Remove="Resources\Images\message_icon.svg" />
 	  <None Remove="Resources\Images\phone_icon.svg" />
 	  <None Remove="Resources\Images\plusicon.png" />
+	  <None Remove="Resources\Images\price_tag.png" />
 	  <None Remove="Resources\Images\privacy_icon.svg" />
 	  <None Remove="Resources\Images\search_icon.svg" />
 	  <None Remove="Resources\Images\settings_icon.svg" />
@@ -78,9 +80,6 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Pages\AddNewStorage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\BookmarkPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\CustomTabbedPage.xaml">
@@ -99,6 +98,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\RegisterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ReservedPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\SearchPage.xaml">

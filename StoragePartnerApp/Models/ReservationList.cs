@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace StoragePartnerApp.Models
 {
-    public class BookmarkList
+    public class ReservationList
     {
         [JsonProperty("id")]
         public int Id { get; set; }
@@ -18,15 +18,23 @@ namespace StoragePartnerApp.Models
         public double Price { get; set; }
         [JsonProperty("imageUrl")]
         public string ImageUrl { get; set; }
-        public string FullImageUrl => AppSettings.BaseApiUrl + ImageUrl;
-
         [JsonProperty("address")]
         public string Address { get; set; }
         [JsonProperty("status")]
-        public bool Status { get; set; }
-        [JsonProperty("user_Id")]
+        public string Status { get; set; }
+        [JsonProperty("statusId")]
+        public int StatusId { get; set; }
+        [JsonProperty("userId")]
         public int UserId { get; set; }
-        [JsonProperty("propertyId")]
-        public int PropertyId { get; set; }
+        [JsonProperty("ownerId")]
+        public int OwnerId { get; set; }
+        [JsonProperty("storageId")]
+        public int StorageId { get; set; }
+        [JsonProperty("startDate")]
+        public string StartDate { get; set; }
+        [JsonProperty("endDate")]
+        public string EndDate { get; set; }
+        [JsonProperty("total")]
+        public double Total { get; set; }
     }
 }

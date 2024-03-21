@@ -11,14 +11,32 @@ public partial class PropertyListPage : ContentPage
 
 		Title = categoryName;
 
-		GetCategoriesList(categoryId);
+        GetStorageList(categoryId);
 
     }
 
-	private async void GetCategoriesList(int categoryId)
+	private async void GetStorageList(int categoryId)
 	{
+		var storageResult = new List<PropertyByCategory>();
 		var propertyList = await ApiService.GetStorageByCategory(categoryId);
-		CvPropertyList.ItemsSource = propertyList;
+		var reservedStorageList = await ApiService.GetReservedStorages();
+		foreach (var storage in propertyList)
+		{
+			if(reservedStorageList.Any(r => r.StorageId == storage.Id && r.EndDate > DateTime.Now.Date && r.StatusId == 1))
+			{
+				storage.Status = "Unavailable";
+            }
+			else if (reservedStorageList.Any(r => r.StorageId == storage.Id && r.EndDate > DateTime.Now.Date && r.StatusId == 2))
+			{
+				storage.Status = "Booked on";
+			}
+			else
+			{
+                storage.Status = "Available";
+            }
+			storageResult.Add(storage);
+        }
+		CvPropertyList.ItemsSource = storageResult;
 	}
 
     private async void CvPropertyList_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StoragePartnerApp.Pages.ReservedPage"
+             Title="ReservedPage">
+    <CollectionView x:Name="CVReservedProperties"
+                    Margin="10"
+                    SelectionMode="Single">
+        <CollectionView.ItemsLayout>
+            <LinearItemsLayout Orientation="Vertical"
+                               ItemSpacing="20" />
+        </CollectionView.ItemsLayout>
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*" />
+                        <ColumnDefinition Width="6*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Frame Grid.Row="0"
+                           CornerRadius="10"
+                           Padding="0"
+                           IsClippedToBounds="True">
+                        <Image HeightRequest="160"
+                               WidthRequest="160"
+                               Aspect="Fill"
+                               Source="{Binding ImageUrl}" />
+                    </Frame>
+                    <StackLayout Grid.Column="1"
+                                 Spacing="10"
+                                 Padding="15">
+                        <Label FontSize="Small"
+                               Text="{Binding Name}" />
+                        <HorizontalStackLayout>
+                            <Image Source="price_tag.png"
+                                   HeightRequest="15" />
+                            <Label Text=" Rs " />
+                            <Label Text="{Binding Total}"
+                                   FontSize="Small" />
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout>
+                            <Image Source="location_Icon.svg"
+                                   HeightRequest="15" />
+                            <Label Text=" " />
+                            <Label Text="{Binding Address}"
+                                   FontSize="Small" />
+                        </HorizontalStackLayout>
+                        <HorizontalStackLayout>
+                            <Image Source="calendar_image.jpg"
+                                   HeightRequest="15" />
+                            <Label Text="{Binding StartDate}"
+                                   FontSize="Small" />
+                            <Label Text=" - "
+                                   FontAttributes="Bold" />
+                            <Image Source="calendar_image.jpg"
+                                   HeightRequest="15" />
+                            <Label Text="{Binding EndDate}"
+                                   FontSize="Small" />
+                        </HorizontalStackLayout>
+                        <Label Text="{Binding Status}"
+                               FontSize="Small"
+                               TextColor="white"
+                               BackgroundColor="#1d94ab"
+                               WidthRequest="55"
+                               HorizontalOptions="Start" />
+                    </StackLayout>
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>

@@ -39,11 +39,21 @@
                                      Padding="15"
                                      Spacing="10">
                             <Label Text="{Binding Name}"
-                                   FontSize="Medium" />
-                            <Label Text="{Binding Price}"
                                    FontSize="Small" />
-                            <Label Text="{Binding Address}"
-                                   FontSize="Small" />
+                            <HorizontalStackLayout>
+                                <Image Source="price_tag.png"
+                                       HeightRequest="15" />
+                                <Label Text=" Rs " />
+                                <Label Text="{Binding Price}"
+                                       FontSize="Small" />
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout>
+                                <Image Source="location_Icon.svg"
+                                       HeightRequest="15" />
+                                <Label Text=" " />
+                                <Label Text="{Binding Address}"
+                                       FontSize="Small" />
+                            </HorizontalStackLayout>
                         </StackLayout>
                     </Grid>
                 </DataTemplate>

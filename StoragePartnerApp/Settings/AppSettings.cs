@@ -20,10 +20,10 @@ namespace StoragePartnerApp.Settings
         public static string MyStorageUrl = BaseApiUrl + "api/properties/mystorage/";
         public static string AddNewStorage = BaseApiUrl + "api/properties/";
         public static string UploadImage = BaseApiUrl + "api/properties/uploadimage";
+        public static string AddReservationUrl = BaseApiUrl + "api/reservations";
+        public static string GetReservedStorages = BaseApiUrl + "api/reservations";
 
         //Implement
-        public static string BookmarksUrl =  BaseApiUrl + "api/bookmarks";
-        public static string AddBookmarksUrl =  BaseApiUrl + "api/bookmarks";
         public static string DeleteBookmarkUrl =  BaseApiUrl + "api/bookmarks/";
 
         //Google map
