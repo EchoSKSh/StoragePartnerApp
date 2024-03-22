@@ -186,18 +186,31 @@ namespace StoragePartnerApp.Services
 
         }
 
-        //public static async Task<bool> DeleteBookmark(int bookmarkId)
-        //{
-        //    var httpClient = new HttpClient();
-        //    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accesstoken", string.Empty));
-        //    var response = await httpClient.DeleteAsync(AppSettings.DeleteBookmarkUrl + bookmarkId);
+        public static async Task<bool> DeleteReservation(int reservationId)
+        {
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accesstoken", string.Empty));
+            var response = await httpClient.DeleteAsync(AppSettings.DeleteReservation + reservationId);
 
-        //    if (!response.IsSuccessStatusCode)
-        //    {
-        //        return false;
-        //    }
-        //    return true;
-        //}
+            if (!response.IsSuccessStatusCode)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public static async Task<bool> DeleteStorage(int storageId)
+        {
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accesstoken", string.Empty));
+            var response = await httpClient.DeleteAsync(AppSettings.DeleteReservation + storageId);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return false;
+            }
+            return true;
+        }
 
         public static async Task<Location> GetLocationFromAddress(string address)
         {

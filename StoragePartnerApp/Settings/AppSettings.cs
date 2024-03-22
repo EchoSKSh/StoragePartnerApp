@@ -24,9 +24,8 @@ namespace StoragePartnerApp.Settings
         public static string GetReservedStorages = BaseApiUrl + "api/reservations";
         public static string ReservedStorageDetailUrl = BaseApiUrl + "api/reservations/";
         public static string GetUserDetails = BaseApiUrl + "api/user/";
-
-        //Implement
-        public static string DeleteBookmarkUrl =  BaseApiUrl + "api/bookmarks/";
+        public static string DeleteReservation = BaseApiUrl + "api/reservations/";
+        public static string DeleteStorage = BaseApiUrl + "api/properties/";
 
         //Google map
         public const string GoogleMapapiKey = "AIzaSyCApYlmf5stSZ-BoqLmLVexPvkRE8CAFxU";

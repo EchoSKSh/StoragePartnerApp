@@ -1,3 +1,4 @@
+using MetalPerformanceShaders;
 using StoragePartnerApp.Services;
 
 namespace StoragePartnerApp.Pages;
@@ -35,6 +36,7 @@ public partial class MyStorageDetailsPage : ContentPage
             lblStartDate.Text = reservation.StartDate.ToShortDateString();
             lblEndDate.Text = reservation.EndDate.ToShortDateString();
             costLabel.Text = reservation.Total.ToString();
+            lblReserveText.Text = "Requested By - ";
             lblReservedBy.Text = userDetails.Name;
             reservationSummary.IsVisible = true;
             stackApproveReject.IsVisible = true;
@@ -47,6 +49,7 @@ public partial class MyStorageDetailsPage : ContentPage
             lblStartDate.Text = reservation.StartDate.ToShortDateString();
             lblEndDate.Text = reservation.EndDate.ToShortDateString();
             costLabel.Text = reservation.Total.ToString();
+            lblReserveText.Text = "Reserved By - ";
             lblReservedBy.Text = userDetails.Name;
             reservationSummary.IsVisible = true;
         }
@@ -55,5 +58,25 @@ public partial class MyStorageDetailsPage : ContentPage
             stackEditDelte.IsVisible = true;
         }
 
+    }
+
+    private async void btnEdit_Clicked(object sender, EventArgs e)
+    {
+        await DisplayAlert("", "Something went wrong. Please try agian", "Ok");
+    }
+
+    private async void btnDelete_Clicked(object sender, EventArgs e)
+    {
+        var respone = await ApiService.DeleteStorage(storageId);
+
+        if (respone)
+        {
+            await DisplayAlert("", "Storage deleted successfuly", "Ok");
+            await Navigation.PopAsync();
+        }
+        else
+        {
+            await DisplayAlert("", "Cannot delete storage. please try again later", "Ok");
+        }
     }
 }
