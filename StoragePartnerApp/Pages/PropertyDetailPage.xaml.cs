@@ -42,7 +42,7 @@ public partial class PropertyDetailPage : ContentPage
 
     private void TapMessage_Tapped(object sender, TappedEventArgs e)
     {
-        var message = new SmsMessage("Hi!, I am interested in your property", phoneNumber);
+        var message = new SmsMessage("Hi!, I am interested in your storage", phoneNumber);
         Sms.ComposeAsync(message);
     }
 

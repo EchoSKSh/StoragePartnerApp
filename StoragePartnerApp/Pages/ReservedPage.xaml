@@ -5,7 +5,8 @@
              Title="ReservedPage">
     <CollectionView x:Name="CVReservedProperties"
                     Margin="10"
-                    SelectionMode="Single">
+                    SelectionMode="Single"
+                    SelectionChanged="CVReservedProperties_SelectionChanged">
         <CollectionView.ItemsLayout>
             <LinearItemsLayout Orientation="Vertical"
                                ItemSpacing="20" />

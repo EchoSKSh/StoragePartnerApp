@@ -22,6 +22,7 @@ namespace StoragePartnerApp.Settings
         public static string UploadImage = BaseApiUrl + "api/properties/uploadimage";
         public static string AddReservationUrl = BaseApiUrl + "api/reservations";
         public static string GetReservedStorages = BaseApiUrl + "api/reservations";
+        public static string ReservedStorageDetailUrl = BaseApiUrl + "api/reservations/";
 
         //Implement
         public static string DeleteBookmarkUrl =  BaseApiUrl + "api/bookmarks/";

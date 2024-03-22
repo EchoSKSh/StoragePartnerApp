@@ -22,6 +22,7 @@ public partial class ReservedPage : ContentPage
             {
                 var reservationDetails = new ReservationList
                 {
+                    Id = storage.Id,
                     Name = storageDetails.Name,
                     Address = storageDetails.Address,
                     Total = storage.Total,
@@ -49,5 +50,18 @@ public partial class ReservedPage : ContentPage
     {
         base.OnAppearing();
         GetReservedPropertyList();
+    }
+
+    private async void CVReservedProperties_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        var currentSelection = (ReservationList)e.CurrentSelection.FirstOrDefault();
+        if (currentSelection == null)
+        {
+            return;
+        }
+
+        await Navigation.PushModalAsync(new ReservedDetailPage(currentSelection.Id));
+
+        ((CollectionView)sender).SelectedItem = null;
     }
 }

@@ -101,6 +101,16 @@ namespace StoragePartnerApp.Services
             return results;
         }
 
+        public static async Task<Reservation> GetReservedStorageDetails(int reservationId)
+        {
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accesstoken", string.Empty));
+            var response = await httpClient.GetStringAsync(AppSettings.ReservedStorageDetailUrl + reservationId);
+            var results = JsonConvert.DeserializeObject<Reservation>(response);
+
+            return results;
+        }
+
         public static async Task<List<TrendingProperty>> GetTrendingStorages()
         {
             var httpClient = new HttpClient();
