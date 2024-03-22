@@ -55,12 +55,14 @@
                                     <Label Text="{Binding Address}"
                                            FontSize="Small" />
                                 </HorizontalStackLayout>
-                                <Label Text="{Binding Status}"
-                                       FontSize="Small"
-                                       TextColor="white"
-                                       BackgroundColor="#1d94ab"
-                                       WidthRequest="55"
-                                       HorizontalOptions="Start" />
+                                <HorizontalStackLayout x:Name="statusStack">
+                                    <Label Text="{Binding Status}"
+                                           FontSize="Small"
+                                           TextColor="white"
+                                           BackgroundColor="#1d94ab"
+                                           WidthRequest="55"
+                                           HorizontalOptions="Start" />
+                                </HorizontalStackLayout>
                             </StackLayout>
                         </Grid>
                     </DataTemplate>

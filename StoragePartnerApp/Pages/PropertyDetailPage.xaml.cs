@@ -137,7 +137,7 @@ public partial class PropertyDetailPage : ContentPage
         }
         else
         {
-            await DisplayAlert("", "Oops something went wrong", "Cancel");
+            await DisplayAlert("", "Cannot reserve own storage listing", "Cancel");
         }
     }
 }

@@ -17,9 +17,10 @@
                 Margin="10,10,10,10"
                 Padding="15,10,15,10"
                 CornerRadius="10"
-                HorizontalOptions="FillAndExpand"/>
+                HorizontalOptions="FillAndExpand"
+                Clicked="myStorageReport_Clicked"/>
         
-        <Button Text="Reservation Detail"
+        <Button Text="My Reservations"
                 x:Name="reservationDetailReport"
                 BackgroundColor="#1d94ab"
                 TextColor="White"
@@ -27,7 +28,8 @@
                 Margin="10,10,10,10"
                 Padding="15,10,15,10"
                 CornerRadius="10"
-                HorizontalOptions="FillAndExpand"/>
+                HorizontalOptions="FillAndExpand"
+                Clicked="reservationDetailReport_Clicked"/>
 
         <Button Text="Sign Out"
                 x:Name="SignOut"
