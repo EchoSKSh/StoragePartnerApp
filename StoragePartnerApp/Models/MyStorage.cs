@@ -34,5 +34,8 @@ namespace StoragePartnerApp.Models
         public double Longitude { get; set; }
         [JsonProperty("latitude")]
         public double Latitude { get; set; }
+        public string Status { get; set; }
+        public int ReservationId { get; set; }
+
     }
 }

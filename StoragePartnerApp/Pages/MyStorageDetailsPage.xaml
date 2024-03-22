@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="StoragePartnerApp.Pages.MyStorageDetailsPage"
+             Title="MyStorageDetailsPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Image x:Name="ReservedDetailImage"
+               Grid.Row="0"
+               Grid.RowSpan="3"
+               VerticalOptions="Start"
+               HeightRequest="280"
+               Aspect="Fill" />
+
+        <StackLayout Grid.Row="1"
+                     Margin="20,0,20,0"
+                     Orientation="Horizontal">
+            <ImageButton x:Name="BackButtonImage"
+                         Source="back_icon.svg"
+                         HorizontalOptions="Start"
+                         VerticalOptions="Start"
+                         Padding="5"
+                         WidthRequest="40"
+                         HeightRequest="40"
+                         CornerRadius="10"
+                         BackgroundColor="White"
+                         Clicked="BackButtonImage_Clicked" />
+        </StackLayout>
+
+        <VerticalStackLayout Grid.Row="3"
+                             Margin="20">
+            <HorizontalStackLayout Spacing="5">
+                <Image Source="price_tag.png"
+                       HeightRequest="20" />
+                <Label FontSize="Subtitle"
+                       Text="Rs"
+                       FontAttributes="Bold" />
+                <Label x:Name="PriceLabel"
+                       FontSize="Subtitle" />
+                <Label Text="per day"
+                       FontSize="10"
+                       FontAttributes="Italic"
+                       Margin="5,5,0,0" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="5"
+                                   Margin="0,10,0,0">
+                <Image Source="location_Icon.svg"
+                       HeightRequest="20" />
+                <Label x:Name="AddressLabel"
+                       FontSize="Medium" />
+            </HorizontalStackLayout>
+            <Label Text="Description"
+                   FontSize="Title"
+                   Margin="0,20,0,20" />
+            <Label x:Name="DescriptionLabel"
+                   FontSize="Medium"
+                   Margin="0,0,0,10" />
+            <VerticalStackLayout IsVisible="false"
+                                 x:Name="reservationSummary">
+                <HorizontalStackLayout x:Name="startDateStack"
+                                       Margin="0,10,0,0">
+                    <Label Text="Duration"
+                           Margin="0,0,25,0"
+                           FontSize="Medium" />
+                    <Image Source="calendar_image.jpg"
+                           HeightRequest="20" />
+                    <Label Text=" " />
+                    <Label x:Name="lblStartDate"
+                           Margin="0,5,0,0" />
+                    <Label Text=" - "
+                           FontAttributes="Bold"
+                           FontSize="Large" />
+                    <Image Source="calendar_image.jpg"
+                           HeightRequest="20" />
+                    <Label Text=" " />
+                    <Label x:Name="lblEndDate"
+                           Margin="0,5,0,0" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout x:Name="costLabelStack"
+                                       Margin="0,25,0,0">
+                    <Label Text="Total Cost   - Rs "
+                           FontAttributes="Bold"
+                           FontSize="Medium" />
+                    <Label x:Name="costLabel"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"
+                           FontSize="Medium" />
+                </HorizontalStackLayout>
+                <HorizontalStackLayout>
+                    <Label Text="Reserved by - "
+                           FontSize="Medium"/>
+                    <Label x:Name="lblReservedBy"
+                           FontSize="Medium" 
+                           FontAttributes="Italic"/>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+            <HorizontalStackLayout Spacing="10"
+                                   VerticalOptions="End"
+                                   Margin="0,5,0,5"
+                                   IsVisible="false"
+                                   x:Name="stackApproveReject">
+                <Button Text="Approve"
+                        WidthRequest="150" />
+                <Button Text="Reject"
+                        WidthRequest="150"
+                        BackgroundColor="Red"
+                        Margin="50,0,0,0" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="10"
+                                   VerticalOptions="End"
+                                   Margin="0,5,0,5"
+                                   IsVisible="false"
+                                   x:Name="stackEditDelte">
+                <Button Text="Edit"
+                        WidthRequest="150"/>
+                <Button Text="Delete"
+                        WidthRequest="150"
+                        BackgroundColor="Red"
+                        Margin="50,0,0,0"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

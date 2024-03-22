@@ -11,53 +11,61 @@
                      HorizontalOptions="End"
                      x:Name="AddNewStorage"
                      Clicked="AddNewStorage_Clicked" />
-        <CollectionView x:Name="CvMyStorage"
-                        Margin="10"
-                        SelectionMode="Single"
-                        SelectionChanged="CvMyStorage_SelectionChanged">
-            <CollectionView.ItemsLayout>
-                <LinearItemsLayout ItemSpacing="20"
-                                   Orientation="Vertical" />
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="4*" />
-                            <ColumnDefinition Width="6*" />
-                        </Grid.ColumnDefinitions>
+        <VerticalStackLayout>
+            <CollectionView x:Name="CvMyStorage"
+                            Margin="10"
+                            SelectionMode="Single"
+                            SelectionChanged="CvMyStorage_SelectionChanged">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="20"
+                                       Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*" />
+                                <ColumnDefinition Width="6*" />
+                            </Grid.ColumnDefinitions>
 
-                        <Border Grid.Column="0"
-                                Padding="10,0,10,0"
-                                Margin="0"
-                                StrokeShape="RoundRectangle 5,5,5,5">
-                            <Image Aspect="Fill"
-                                   HeightRequest="160"
-                                   Source="{Binding ImageUrl}" />
-                        </Border>
-                        <StackLayout Grid.Column="1"
-                                     Padding="15"
-                                     Spacing="10">
-                            <Label Text="{Binding Name}"
-                                   FontSize="Small" />
-                            <HorizontalStackLayout>
-                                <Image Source="price_tag.png"
-                                       HeightRequest="15" />
-                                <Label Text=" Rs " />
-                                <Label Text="{Binding Price}"
+                            <Border Grid.Column="0"
+                                    Padding="10,0,10,0"
+                                    Margin="0"
+                                    StrokeShape="RoundRectangle 5,5,5,5">
+                                <Image Aspect="Fill"
+                                       HeightRequest="160"
+                                       Source="{Binding ImageUrl}" />
+                            </Border>
+                            <StackLayout Grid.Column="1"
+                                         Padding="15"
+                                         Spacing="10">
+                                <Label Text="{Binding Name}"
                                        FontSize="Small" />
-                            </HorizontalStackLayout>
-                            <HorizontalStackLayout>
-                                <Image Source="location_Icon.svg"
-                                       HeightRequest="15" />
-                                <Label Text=" " />
-                                <Label Text="{Binding Address}"
-                                       FontSize="Small" />
-                            </HorizontalStackLayout>
-                        </StackLayout>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                                <HorizontalStackLayout>
+                                    <Image Source="price_tag.png"
+                                           HeightRequest="15" />
+                                    <Label Text=" Rs " />
+                                    <Label Text="{Binding Price}"
+                                           FontSize="Small" />
+                                </HorizontalStackLayout>
+                                <HorizontalStackLayout>
+                                    <Image Source="location_Icon.svg"
+                                           HeightRequest="15" />
+                                    <Label Text=" " />
+                                    <Label Text="{Binding Address}"
+                                           FontSize="Small" />
+                                </HorizontalStackLayout>
+                                <Label Text="{Binding Status}"
+                                       FontSize="Small"
+                                       TextColor="white"
+                                       BackgroundColor="#1d94ab"
+                                       WidthRequest="55"
+                                       HorizontalOptions="Start" />
+                            </StackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
     </VerticalStackLayout>
 </ContentPage>

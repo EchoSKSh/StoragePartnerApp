@@ -6,4 +6,10 @@ public partial class SettingsPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void SignOut_Clicked(object sender, EventArgs e)
+    {
+
+    }
+
 }

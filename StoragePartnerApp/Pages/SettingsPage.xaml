@@ -3,9 +3,43 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="StoragePartnerApp.Pages.SettingsPage">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI! from settings page"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Label Text="Analytics"
+               TextColor="#3F51B5"
+               FontSize="Large"
+               FontAttributes="Bold"
+               HorizontalTextAlignment="Center"
+               BackgroundColor="Transparent"/>
+        <Button Text="My Storages"
+                x:Name="myStorageReport"
+                BackgroundColor="#1d94ab"
+                TextColor="White"
+                FontSize="16"
+                Margin="10,10,10,10"
+                Padding="15,10,15,10"
+                CornerRadius="10"
+                HorizontalOptions="FillAndExpand"/>
+        
+        <Button Text="Reservation Detail"
+                x:Name="reservationDetailReport"
+                BackgroundColor="#1d94ab"
+                TextColor="White"
+                FontSize="16"
+                Margin="10,10,10,10"
+                Padding="15,10,15,10"
+                CornerRadius="10"
+                HorizontalOptions="FillAndExpand"/>
+
+        <Button Text="Sign Out"
+                x:Name="SignOut"
+                BackgroundColor="#FF4CAF50"
+                TextColor="White"
+                FontSize="16"
+                Margin="10,10,10,10"
+                Padding="15,10,15,10"
+                CornerRadius="10"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="End"
+                Clicked="SignOut_Clicked"/>
+
     </VerticalStackLayout>
 </ContentPage>

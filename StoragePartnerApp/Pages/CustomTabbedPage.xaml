@@ -14,6 +14,6 @@
                         IconImageSource="bookmark_icon.svg" />
     <local:MyStorage Title="My Storage"
                      IconImageSource="storage.png" />
-    <local:SettingsPage Title="Settings"
+    <local:SettingsPage Title="More"
                         IconImageSource="settings_icon.svg" />
 </TabbedPage>
