@@ -36,13 +36,14 @@ public partial class MyStorage : ContentPage
 		{
             if (reservedStorages.Any(r => r.StorageId == storage.Id && r.EndDate > DateTime.Now.Date && r.StatusId == 1))
             {
-                storage.Status = "Pending Aproval";
-                //statusStack.IsVisible = true;
+                storage.Status = "Pending Aproval";                
             }
             else if (reservedStorages.Any(r => r.StorageId == storage.Id && r.EndDate > DateTime.Now.Date && r.StatusId == 2))
             {
                 storage.Status = "Booked on";
-                //statusStack.IsVisible = true;
+            }else
+            {
+                storage.Status = "Available";
             }
 
             myStorageList.Add(storage);

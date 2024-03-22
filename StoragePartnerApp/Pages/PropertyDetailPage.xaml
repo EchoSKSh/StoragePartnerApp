@@ -63,7 +63,11 @@
                 <Image Source="location_Icon.svg"
                        HeightRequest="20" />
                 <Label x:Name="AddressLabel"
-                       FontSize="Medium" />
+                       FontSize="Medium">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                    </Label.GestureRecognizers>
+                </Label>
             </HorizontalStackLayout>
             <Label Text="Description"
                    FontSize="Title"

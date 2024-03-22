@@ -26,6 +26,8 @@ namespace StoragePartnerApp.Settings
         public static string GetUserDetails = BaseApiUrl + "api/user/";
         public static string DeleteReservation = BaseApiUrl + "api/reservations/";
         public static string DeleteStorage = BaseApiUrl + "api/properties/";
+        public static string UpdateStatus = BaseApiUrl + "api/reservations/updatestatus/";
+
 
         //Google map
         public const string GoogleMapapiKey = "AIzaSyCApYlmf5stSZ-BoqLmLVexPvkRE8CAFxU";

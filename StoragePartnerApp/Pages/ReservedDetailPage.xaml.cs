@@ -32,4 +32,33 @@ public partial class ReservedDetailPage : ContentPage
         lblEndDate.Text = reservationDetail.EndDate.ToShortDateString();
         costLabel.Text = reservationDetail.Total.ToString();
     }
+
+    private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+        var address = AddressLabel.Text;
+
+        if (string.IsNullOrEmpty(address))
+        {
+            await DisplayAlert("Empty Address", "Please enter an address to open in Maps.", "OK");
+            return;
+        }
+
+        // Construct platform-specific URIs
+        string uri = $"geo:0,0?q={Uri.EscapeDataString(address)}";
+
+        if (DeviceInfo.Platform == DevicePlatform.iOS)
+        {
+            uri = $"http://maps.apple.com/?daddr={Uri.EscapeDataString(address)}";
+        }
+
+        // Launch the maps app on the device
+        try
+        {
+            await Launcher.OpenAsync(uri);
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"Failed to launch Maps app: {ex.Message}", "OK");
+        }
+    }
 }

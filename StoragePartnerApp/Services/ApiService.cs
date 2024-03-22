@@ -186,6 +186,21 @@ namespace StoragePartnerApp.Services
 
         }
 
+        //public static async Task<bool> UpdateStatus(int reservationid, int statusId)
+        //{
+        //    var httpClient = new HttpClient();
+        //    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", Preferences.Get("accesstoken", string.Empty));
+        //    var response = await httpClient.PutAsync(AppSettings.UpdateStatus + reservationid + "/" + statusId);
+
+        //    if (!response.IsSuccessStatusCode)
+        //    {
+        //        return false;
+        //    }
+
+        //    return true;
+
+        //}
+
         public static async Task<bool> DeleteReservation(int reservationId)
         {
             var httpClient = new HttpClient();

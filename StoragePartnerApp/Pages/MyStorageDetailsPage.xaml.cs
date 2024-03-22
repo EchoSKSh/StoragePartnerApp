@@ -1,4 +1,3 @@
-using MetalPerformanceShaders;
 using StoragePartnerApp.Services;
 
 namespace StoragePartnerApp.Pages;
@@ -77,6 +76,45 @@ public partial class MyStorageDetailsPage : ContentPage
         else
         {
             await DisplayAlert("", "Cannot delete storage. please try again later", "Ok");
+        }
+    }
+
+    private void btnApprove_Clicked(object sender, EventArgs e)
+    {
+
+    }
+
+    private void btnReject_Clicked(object sender, EventArgs e)
+    {
+
+    }
+
+    private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+        var address = AddressLabel.Text;
+
+        if (string.IsNullOrEmpty(address))
+        {
+            await DisplayAlert("Empty Address", "Please enter an address to open in Maps.", "OK");
+            return;
+        }
+
+        // Construct platform-specific URIs
+        string uri = $"geo:0,0?q={Uri.EscapeDataString(address)}";
+
+        if (DeviceInfo.Platform == DevicePlatform.iOS)
+        {
+            uri = $"http://maps.apple.com/?daddr={Uri.EscapeDataString(address)}";
+        }
+
+        // Launch the maps app on the device
+        try
+        {
+            await Launcher.OpenAsync(uri);
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"Failed to launch Maps app: {ex.Message}", "OK");
         }
     }
 }
