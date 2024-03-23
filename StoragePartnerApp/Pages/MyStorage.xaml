@@ -60,7 +60,7 @@
                                            FontSize="Small"
                                            TextColor="white"
                                            BackgroundColor="#1d94ab"
-                                           WidthRequest="55"
+                                           WidthRequest="70"
                                            HorizontalOptions="Start" />
                                 </HorizontalStackLayout>
                             </StackLayout>

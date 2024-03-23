@@ -41,7 +41,7 @@
 
             <Label Text="Join Now"
                    FontSize="Medium"
-                   TextColor="#101010" />
+                   TextColor="#1d94ab" />
 
             <HorizontalStackLayout.GestureRecognizers>
                 <TapGestureRecognizer x:Name="TapJoinNow" Tapped="TapJoinNow_Tapped"/>

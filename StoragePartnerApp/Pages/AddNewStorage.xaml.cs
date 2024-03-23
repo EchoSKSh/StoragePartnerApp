@@ -6,6 +6,7 @@ using StoragePartnerApp.Models;
 using StoragePartnerApp.Services;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace StoragePartnerApp.Pages;
 
@@ -57,30 +58,59 @@ public partial class AddNewStorage : ContentPage
 
     private async void btnAddNewStorage_Clicked(object sender, EventArgs e)
     {
-        var storage = new PropertyDetail
-        {
-            Name = entName.Text,
-            Description = entDescription.Text,
-            Price = Convert.ToDouble(entPrice.Text),
-            Address = entAddress.Text,
-            Phone = entPhone.Text,
-            Longitude = longtitude,
-            Latitude = latitude,
-            CategoryId = ((Category)pickerCategory.SelectedItem).Id
-        };
 
-        var isStorageAdded = await ApiService.AddNewStorage(storage);
+        if (string.IsNullOrEmpty(entName.Text))
+        {
+            await DisplayAlert("", "Please enter the name to proceed further", "OK");
+        }
+        else if (string.IsNullOrEmpty(entDescription.Text))
+        {
+            await DisplayAlert("", "Please enter the description to proceed further", "OK");
+        }
+        else if (string.IsNullOrEmpty(entAddress.Text))
+        {
+            await DisplayAlert("", "Please enter the address to proceed further", "OK");
+        }
+        else if (string.IsNullOrEmpty(entPrice.Text))
+        {
+            await DisplayAlert("", "Please enter the price to proceed further", "OK");
+        }
+        else if (string.IsNullOrEmpty(entPhone.Text))
+        {
+            await DisplayAlert("", "Please enter the password to proceed further", "OK");
+        }
+        else if (!Regex.IsMatch(entPhone.Text, @"^\d{10}$"))
+        {
+            await DisplayAlert("", "Please enter a valid 10 digit phone number to continue with the registration", "OK");
+        }
+        else 
+        {
+            var storage = new PropertyDetail
+            {
+                Name = entName.Text,
+                Description = entDescription.Text,
+                Price = Convert.ToDouble(entPrice.Text),
+                Address = entAddress.Text,
+                Phone = entPhone.Text,
+                Longitude = longtitude,
+                Latitude = latitude,
+                CategoryId = ((Category)pickerCategory.SelectedItem).Id
+            };
 
-        if (isStorageAdded)
-        {
-            await DisplayAlert("", "Succesfully storage added. Please upload primary image", "Ok");
-            await Task.Delay(1000);
-            await UploadImage();
+            var isStorageAdded = await ApiService.AddNewStorage(storage);
+
+            if (isStorageAdded)
+            {
+                await DisplayAlert("", "Succesfully storage added. Please upload primary image", "Ok");
+                await Task.Delay(1000);
+                await UploadImage();
+            }
+            else
+            {
+                await DisplayAlert("", "Something went wrong", "Cancel");
+            }
         }
-        else
-        {
-            await DisplayAlert("", "Something went wrong", "Cancel");
-        }
+
     }
 
     private async Task UploadImage()
@@ -99,6 +129,8 @@ public partial class AddNewStorage : ContentPage
                     await stream.ReadAsync(imageData.ImageArray, 0, (int)stream.Length);
                 }
                 imageData.FileName = fileResult.FileName;
+
+                await Navigation.PopAsync();
                 
             }
             else

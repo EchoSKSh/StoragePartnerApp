@@ -31,12 +31,12 @@ public partial class MyStorageDetailsPage : ContentPage
         if(ReservedStorages.Any(r => r.StorageId == storageId && r.EndDate > DateTime.Now.Date && r.StatusId == 1))
         {
             var reservation = ReservedStorages.FirstOrDefault(r => r.StorageId == storageId && r.EndDate > DateTime.Now.Date && r.StatusId == 1);
-            var userDetails = await ApiService.GetUserDetails(reservation.UserId);         
+            //var userDetails = await ApiService.GetUserDetails(reservation.UserId);         
             lblStartDate.Text = reservation.StartDate.ToShortDateString();
             lblEndDate.Text = reservation.EndDate.ToShortDateString();
             costLabel.Text = reservation.Total.ToString();
             lblReserveText.Text = "Requested By - ";
-            lblReservedBy.Text = userDetails.Name;
+            //lblReservedBy.Text = userDetails.Name;
             reservationSummary.IsVisible = true;
             stackApproveReject.IsVisible = true;
 
@@ -79,14 +79,16 @@ public partial class MyStorageDetailsPage : ContentPage
         }
     }
 
-    private void btnApprove_Clicked(object sender, EventArgs e)
+    private async void btnApprove_Clicked(object sender, EventArgs e)
     {
-
+        await DisplayAlert("", "Are you sure to approve this request", "Cancel", "OK");
+        await Navigation.PopAsync();
     }
 
-    private void btnReject_Clicked(object sender, EventArgs e)
+    private async void btnReject_Clicked(object sender, EventArgs e)
     {
-
+        await DisplayAlert("", "Are you sure to reject this request", "Cancel", "OK");
+        await Navigation.PopAsync();
     }
 
     private async void TapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
